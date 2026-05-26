@@ -1,0 +1,37 @@
+export MONGO_URI='mongodb://admin:m165AdminPass!@107.20.30.198:27017/?authSource=admin'
+
+==============================
+A) AGGREGATIONEN ANZEIGEN
+==============================
+
+cat KN-M-04/aggregations.js
+
+==============================
+A) AGGREGATIONEN AUSFÜHREN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-04/aggregations.js
+
+==============================
+B) JOINS ANZEIGEN
+==============================
+
+
+==============================
+B) JOINS AUSFÜHREN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-04/joins.js
+
+==============================
+C) SUBDOCS ANZEIGEN
+==============================
+
+
+==============================
+C) SUBDOCS AUSFÜHREN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-04/subdocs.js
+cat KN-M-04/joins.js
+cat KN-M-04/subdocs.js

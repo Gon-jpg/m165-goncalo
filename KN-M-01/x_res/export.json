@@ -1,0 +1,8 @@
+{
+  "_id": { "$oid": "660f9a0e3a1e44763d88bf" },
+  "first_name": "Goncalo",
+  "last_name": "De Almeida",
+  "height_cm": { "$numberInt": "182" },
+  "birthdate": { "$date": { "$numberLong": "828921600000" } },
+  "city": "Zürich"
+}

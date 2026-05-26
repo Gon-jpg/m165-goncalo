@@ -1,0 +1,39 @@
+export MONGO_URI='mongodb://admin:m165AdminPass!@107.20.30.198:27017/?authSource=admin'
+
+==============================
+A) SCHEMAS ANZEIGEN
+==============================
+
+ls KN-M-06/schemas/
+
+
+==============================
+A) BEISPIELE ANZEIGEN
+==============================
+
+ls KN-M-06/examples/
+
+
+==============================
+B) VALIDATION SCRIPT ANZEIGEN
+==============================
+
+cat KN-M-06/applyValidation.js
+
+==============================
+B) VALIDATION ANWENDEN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-06/applyValidation.js
+
+==============================
+C) TEST SCRIPT ANZEIGEN
+==============================
+
+cat KN-M-06/testValidation.js
+
+==============================
+C) VALIDATION TESTEN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-06/testValidation.js

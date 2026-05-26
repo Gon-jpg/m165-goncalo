@@ -1,0 +1,9 @@
+{
+  "tournament_id": "660fb01a3a1e44763d88d0",
+  "club_id":       "660fb01a3a1e44763d88c4",
+  "court_number":  1,
+  "played_at":     "2025-06-14T10:00:00Z",
+  "team_a": ["660fb01a3a1e44763d88e0", "660fb01a3a1e44763d88e1"],
+  "team_b": ["660fb01a3a1e44763d88e2", "660fb01a3a1e44763d88e3"],
+  "sets": [ { "a": 6, "b": 4 }, { "a": 3, "b": 6 }, { "a": 7, "b": 5 } ]
+}

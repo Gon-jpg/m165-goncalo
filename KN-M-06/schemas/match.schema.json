@@ -1,0 +1,26 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["tournament_id", "court_number", "club_id", "played_at", "team_a", "team_b", "sets"],
+    "properties": {
+      "tournament_id": { "bsonType": "objectId" },
+      "club_id":       { "bsonType": "objectId" },
+      "court_number":  { "bsonType": "int", "minimum": 1 },
+      "played_at":     { "bsonType": "date" },
+      "team_a":        { "bsonType": "array", "minItems": 2, "maxItems": 2, "items": { "bsonType": "objectId" } },
+      "team_b":        { "bsonType": "array", "minItems": 2, "maxItems": 2, "items": { "bsonType": "objectId" } },
+      "sets": {
+        "bsonType": "array",
+        "minItems": 2, "maxItems": 5,
+        "items": {
+          "bsonType": "object",
+          "required": ["a", "b"],
+          "properties": {
+            "a": { "bsonType": "int", "minimum": 0, "maximum": 7 },
+            "b": { "bsonType": "int", "minimum": 0, "maximum": 7 }
+          }
+        }
+      }
+    }
+  }
+}

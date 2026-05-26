@@ -1,0 +1,7 @@
+graph LR
+  P([Player]) -- "MEMBER_OF {since}" --> C([Club])
+  C -- HAS_COURT --> CO([Court])
+  P -- "PARTICIPATES_IN {seed, registered_at}" --> T([Tournament])
+  T -- "HAS_MATCH {round}" --> M([Match])
+  M -- PLAYED_ON --> CO
+  P -- "PLAYED_IN {team, won}" --> M

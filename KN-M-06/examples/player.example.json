@@ -1,0 +1,10 @@
+{
+  "license_no": 10001,
+  "first_name": "Alex",
+  "last_name": "Meier",
+  "birthdate": "1995-03-21T00:00:00Z",
+  "ranking_points": 1240,
+  "gender": "M",
+  "home_club_id": "660fb01a3a1e44763d88c4",
+  "contact": { "email": "alex.meier@example.ch", "phone": "+41 79 111 11 11" }
+}

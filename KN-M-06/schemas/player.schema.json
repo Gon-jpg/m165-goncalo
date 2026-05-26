@@ -1,0 +1,22 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["license_no", "first_name", "last_name", "birthdate", "ranking_points", "gender", "home_club_id"],
+    "properties": {
+      "license_no":     { "bsonType": "int", "minimum": 1, "description": "Lizenznummer als int" },
+      "first_name":     { "bsonType": "string", "minLength": 1 },
+      "last_name":      { "bsonType": "string", "minLength": 1 },
+      "birthdate":      { "bsonType": "date" },
+      "ranking_points": { "bsonType": "int", "minimum": 0, "maximum": 5000 },
+      "gender":         { "bsonType": "string", "enum": ["M", "F", "X"] },
+      "home_club_id":   { "bsonType": "objectId" },
+      "contact": {
+        "bsonType": "object",
+        "properties": {
+          "email": { "bsonType": "string", "pattern": "^.+@.+\\..+$" },
+          "phone": { "bsonType": "string" }
+        }
+      }
+    }
+  }
+}

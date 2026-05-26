@@ -16,3 +16,13 @@ data/db/
 # scratch
 source-material/
 source-scripts/
+
+# local docker stack used to run all KNs locally — not part of the submission
+.infra/
+
+# personal study notes for oral defense — not part of the Abgabe
+THEORY.md
+
+# recordings/videos
+*.mov
+*.mp4

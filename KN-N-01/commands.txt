@@ -1,0 +1,17 @@
+==============================
+A) NEO4J BROWSER ÖFFNEN
+==============================
+
+open http://localhost:7474
+
+==============================
+A) VERBINDUNG TESTEN
+==============================
+
+docker exec -i m165-neo4j cypher-shell -u neo4j -p m165NeoPass "RETURN 'connected' AS status;"
+
+==============================
+B) LOGISCHES MODELL ANZEIGEN
+==============================
+
+sed -n '1,220p' KN-N-01/README.md

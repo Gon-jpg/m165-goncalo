@@ -1,0 +1,25 @@
+export MONGO_URI='mongodb://admin:m165AdminPass!@107.20.30.198:27017/?authSource=admin'
+
+==============================
+A) KONZEPTIONELLES MODELL
+==============================
+
+sed -n '1,220p' KN-M-02/README.md
+
+==============================
+B) LOGISCHES MODELL
+==============================
+
+sed -n '1,220p' KN-M-02/README.md
+
+==============================
+C) COLLECTIONS SCRIPT ANZEIGEN
+==============================
+
+cat KN-M-02/createCollections.js
+
+==============================
+C) COLLECTIONS ERSTELLEN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-02/createCollections.js

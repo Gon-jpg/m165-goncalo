@@ -1,0 +1,37 @@
+erDiagram
+    PLAYER }o--o{ TOURNAMENT : "nimmt teil"
+    PLAYER }o--|| CLUB : "Mitglied bei"
+    TOURNAMENT ||--o{ MATCH : "enthält"
+    MATCH }o--|| COURT : "gespielt auf"
+    CLUB ||--o{ COURT : "besitzt"
+    MATCH }o--o{ PLAYER : "Teilnehmer"
+
+    PLAYER {
+        int license_no
+        string first_name
+        string last_name
+        date birthdate
+        int ranking_points
+        char gender
+    }
+    CLUB {
+        string name
+        string city
+        date founded
+    }
+    TOURNAMENT {
+        string name
+        string category
+        date start_date
+        float prize_money
+    }
+    MATCH {
+        date played_at
+        int court_number
+    }
+    COURT {
+        int number
+        string surface
+        bool indoor
+        float hourly_rate
+    }

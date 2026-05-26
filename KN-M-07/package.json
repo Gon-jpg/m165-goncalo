@@ -1,0 +1,7 @@
+{
+  "name": "kn-m-07-padel",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "start": "node app.js" },
+  "dependencies": { "mongodb": "^6.10.0" }
+}

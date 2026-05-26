@@ -1,0 +1,16 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["name", "category", "start_date", "prize_money", "participants"],
+    "properties": {
+      "name":         { "bsonType": "string" },
+      "category":     { "bsonType": "string", "enum": ["Bronze", "Silber", "Gold"] },
+      "start_date":   { "bsonType": "date" },
+      "prize_money":  { "bsonType": ["double", "int", "long"], "minimum": 0 },
+      "participants": {
+        "bsonType": "array",
+        "items":    { "bsonType": "objectId" }
+      }
+    }
+  }
+}

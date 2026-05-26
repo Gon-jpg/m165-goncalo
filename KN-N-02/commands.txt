@@ -1,0 +1,66 @@
+==============================
+A) INSERT SCRIPT ANZEIGEN
+==============================
+
+
+==============================
+A) DATEN EINFÜGEN
+==============================
+
+docker exec -i m165-neo4j cypher-shell -u neo4j -p m165NeoPass < KN-N-02/insert.cypher
+
+==============================
+A) CHECK KNOTEN
+==============================
+
+docker exec -i m165-neo4j cypher-shell -u neo4j -p m165NeoPass "MATCH (n) RETURN labels(n)[0] AS label, count(*) AS n ORDER BY n DESC;"
+
+==============================
+B) QUERIES ANZEIGEN
+==============================
+
+
+==============================
+B) QUERIES AUSFÜHREN
+==============================
+
+docker exec -i m165-neo4j cypher-shell -u neo4j -p m165NeoPass < KN-N-02/queries.cypher
+
+==============================
+C) DELETE ANZEIGEN
+==============================
+
+
+==============================
+C) DELETE OHNE DETACH (Fehler)
+==============================
+
+docker exec -i m165-neo4j cypher-shell -u neo4j -p m165NeoPass "MATCH (p:Player {first_name: 'Diana'}) DELETE p;"
+
+==============================
+C) DELETE MIT DETACH
+==============================
+
+docker exec -i m165-neo4j cypher-shell -u neo4j -p m165NeoPass "MATCH (p:Player {first_name: 'Diana'}) DETACH DELETE p;"
+
+==============================
+D) UPDATES ANZEIGEN
+==============================
+
+
+==============================
+D) UPDATES AUSFÜHREN
+==============================
+
+docker exec -i m165-neo4j cypher-shell -u neo4j -p m165NeoPass < KN-N-02/updates.cypher
+
+==============================
+E) EXTRAS ANZEIGEN
+==============================
+
+
+==============================
+E) EXTRAS AUSFÜHREN
+==============================
+
+docker exec -i m165-neo4j cypher-shell -u neo4j -p m165NeoPass < KN-N-02/extras.cypher

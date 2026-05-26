@@ -1,0 +1,57 @@
+export MONGO_URI='mongodb://admin:m165AdminPass!@107.20.30.198:27017/?authSource=admin'
+
+==============================
+A) USERS SCRIPT ANZEIGEN
+==============================
+
+cat KN-M-05/createUsers.js
+
+==============================
+A) USERS ERSTELLEN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-05/createUsers.js
+
+==============================
+A) FALSCHE AUTHSOURCE (Fehler)
+==============================
+
+mongosh 'mongodb://padelreader:ReaderPass!1@107.20.30.198:27017/padel?authSource=admin'
+
+==============================
+A) PADELREADER (nur lesen)
+==============================
+
+mongosh 'mongodb://padelreader:ReaderPass!1@107.20.30.198:27017/padel?authSource=padel'
+
+db.players.find().limit(2)
+
+db.players.insertOne({test:1})
+
+exit
+
+==============================
+A) PADELWRITER (lesen+schreiben)
+==============================
+
+mongosh 'mongodb://padelwriter:WriterPass!1@107.20.30.198:27017/padel?authSource=admin'
+
+db.players.find().limit(2)
+
+db.players.insertOne({first_name: "Test", license_no: 88889})
+
+db.players.deleteOne({license_no: 88889})
+
+exit
+
+==============================
+B) BACKUP — MONGODUMP
+==============================
+
+mongodump --uri="$MONGO_URI" --db padel --out ./backup-2026-05-12
+
+==============================
+B) RESTORE — MONGORESTORE
+==============================
+
+mongorestore --uri="$MONGO_URI" --drop ./backup-2026-05-12

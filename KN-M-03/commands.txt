@@ -1,0 +1,67 @@
+export MONGO_URI='mongodb://admin:m165AdminPass!@107.20.30.198:27017/?authSource=admin'
+
+==============================
+A) INSERT SCRIPT ANZEIGEN
+==============================
+
+cat KN-M-03/insertData.js
+
+==============================
+A) DATEN EINFÜGEN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-03/insertData.js
+
+==============================
+B) DROP ALL ANZEIGEN
+==============================
+
+
+==============================
+B) DROP ALL AUSFÜHREN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-03/dropAll.js
+
+==============================
+B) DATEN WIEDER EINFÜGEN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-03/insertData.js
+
+==============================
+B) DELETE PARTIAL ANZEIGEN
+==============================
+
+
+==============================
+B) DELETE PARTIAL AUSFÜHREN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-03/deletePartial.js
+
+==============================
+C) QUERIES ANZEIGEN
+==============================
+
+
+==============================
+C) QUERIES AUSFÜHREN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-03/queries.js
+
+==============================
+D) UPDATES ANZEIGEN
+==============================
+
+
+==============================
+D) UPDATES AUSFÜHREN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-03/updates.js
+cat KN-M-03/dropAll.js
+cat KN-M-03/deletePartial.js
+cat KN-M-03/queries.js
+cat KN-M-03/updates.js

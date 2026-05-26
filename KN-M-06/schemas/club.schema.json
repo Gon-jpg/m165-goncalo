@@ -1,0 +1,25 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["name", "city", "founded", "courts"],
+    "properties": {
+      "name":    { "bsonType": "string", "minLength": 2 },
+      "city":    { "bsonType": "string" },
+      "founded": { "bsonType": "date" },
+      "courts": {
+        "bsonType": "array",
+        "minItems": 1,
+        "items": {
+          "bsonType": "object",
+          "required": ["number", "surface", "indoor", "hourly_rate"],
+          "properties": {
+            "number":      { "bsonType": "int", "minimum": 1 },
+            "surface":     { "bsonType": "string", "enum": ["Kunstrasen", "Beton", "Teppich"] },
+            "indoor":      { "bsonType": "bool" },
+            "hourly_rate": { "bsonType": ["double", "int", "long"], "minimum": 0 }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+// KN-N-02 A) Ein einziges CREATE-Statement für das Padel-Modell.
+
+CREATE
+  (cz:Club {name: "Padel Club Zürich", city: "Zürich", founded: date("2017-04-12")}),
+  (cg:Club {name: "Padel Genève",      city: "Genève", founded: date("2019-06-01")}),
+  (cl:Club {name: "Padel Lugano",      city: "Lugano", founded: date("2021-09-15")}),
+
+  (cz_c1:Court {number: 1, surface: "Kunstrasen", indoor: true,  hourly_rate: 38.0}),
+  (cz_c2:Court {number: 2, surface: "Kunstrasen", indoor: true,  hourly_rate: 38.0}),
+  (cz_c3:Court {number: 3, surface: "Beton",      indoor: false, hourly_rate: 28.0}),
+  (cg_c1:Court {number: 1, surface: "Kunstrasen", indoor: true,  hourly_rate: 42.0}),
+  (cl_c1:Court {number: 1, surface: "Kunstrasen", indoor: false, hourly_rate: 30.0}),
+
+  (cz)-[:HAS_COURT]->(cz_c1),
+  (cz)-[:HAS_COURT]->(cz_c2),
+  (cz)-[:HAS_COURT]->(cz_c3),
+  (cg)-[:HAS_COURT]->(cg_c1),
+  (cl)-[:HAS_COURT]->(cl_c1),
+
+  (alex:Player    {license_no: 10001, first_name: "Alex",    last_name: "Meier",   birthdate: date("1995-03-21"), ranking_points: 1240, gender: "M"}),
+  (beatriz:Player {license_no: 10002, first_name: "Beatriz", last_name: "Sousa",   birthdate: date("1998-07-09"), ranking_points: 1580, gender: "F"}),
+  (carlos:Player  {license_no: 10003, first_name: "Carlos",  last_name: "Almeida", birthdate: date("1992-11-30"), ranking_points: 1875, gender: "M"}),
+  (diana:Player   {license_no: 10004, first_name: "Diana",   last_name: "Keller",  birthdate: date("2001-01-15"), ranking_points: 980,  gender: "F"}),
+  (emilio:Player  {license_no: 10005, first_name: "Emilio",  last_name: "Rossi",   birthdate: date("1989-05-05"), ranking_points: 2050, gender: "M"}),
+
+  (alex)-[:MEMBER_OF    {since: date("2020-01-15")}]->(cz),
+  (diana)-[:MEMBER_OF   {since: date("2022-05-01")}]->(cz),
+  (beatriz)-[:MEMBER_OF {since: date("2019-09-12")}]->(cg),
+  (emilio)-[:MEMBER_OF  {since: date("2018-03-20")}]->(cg),
+  (carlos)-[:MEMBER_OF  {since: date("2021-11-08")}]->(cl),
+
+  (open:Tournament   {name: "Swiss Padel Open 2025",   category: "Gold",   start_date: date("2025-06-14"), prize_money: 25000.0}),
+  (spring:Tournament {name: "Spring Cup Zürich",       category: "Silber", start_date: date("2025-04-05"), prize_money: 6000.0}),
+  (junior:Tournament {name: "Junior Trophy Lugano",    category: "Bronze", start_date: date("2025-09-20"), prize_money: 1500.0}),
+
+  (alex)-[:PARTICIPATES_IN    {seed: 4, registered_at: date("2025-05-01")}]->(open),
+  (beatriz)-[:PARTICIPATES_IN {seed: 3, registered_at: date("2025-05-02")}]->(open),
+  (carlos)-[:PARTICIPATES_IN  {seed: 2, registered_at: date("2025-04-30")}]->(open),
+  (diana)-[:PARTICIPATES_IN   {seed: 7, registered_at: date("2025-05-05")}]->(open),
+  (emilio)-[:PARTICIPATES_IN  {seed: 1, registered_at: date("2025-04-28")}]->(open),
+  (alex)-[:PARTICIPATES_IN    {seed: 1, registered_at: date("2025-03-01")}]->(spring),
+  (diana)-[:PARTICIPATES_IN   {seed: 3, registered_at: date("2025-03-04")}]->(spring),
+  (beatriz)-[:PARTICIPATES_IN {seed: 2, registered_at: date("2025-03-02")}]->(spring),
+  (diana)-[:PARTICIPATES_IN   {seed: 2, registered_at: date("2025-08-15")}]->(junior),
+  (carlos)-[:PARTICIPATES_IN  {seed: 1, registered_at: date("2025-08-10")}]->(junior),
+
+  (m1:Match {played_at: datetime("2025-06-14T10:00:00Z"), sets_a: [6,3,7], sets_b: [4,6,5]}),
+  (m2:Match {played_at: datetime("2025-06-14T13:00:00Z"), sets_a: [6,6],    sets_b: [2,3]}),
+  (m3:Match {played_at: datetime("2025-04-05T09:30:00Z"), sets_a: [4,6,6],  sets_b: [6,4,7]}),
+  (m4:Match {played_at: datetime("2025-09-20T11:00:00Z"), sets_a: [6,6],    sets_b: [0,1]}),
+
+  (open)-[:HAS_MATCH   {round: "QF"}]->(m1),
+  (open)-[:HAS_MATCH   {round: "QF"}]->(m2),
+  (spring)-[:HAS_MATCH {round: "SF"}]->(m3),
+  (junior)-[:HAS_MATCH {round: "F"}]->(m4),
+
+  (m1)-[:PLAYED_ON]->(cz_c1),
+  (m2)-[:PLAYED_ON]->(cz_c2),
+  (m3)-[:PLAYED_ON]->(cz_c1),
+  (m4)-[:PLAYED_ON]->(cl_c1),
+
+  (alex)-[:PLAYED_IN    {team: "A", won: true}]->(m1),
+  (diana)-[:PLAYED_IN   {team: "A", won: true}]->(m1),
+  (carlos)-[:PLAYED_IN  {team: "B", won: false}]->(m1),
+  (emilio)-[:PLAYED_IN  {team: "B", won: false}]->(m1),
+  (beatriz)-[:PLAYED_IN {team: "A", won: true}]->(m2),
+  (emilio)-[:PLAYED_IN  {team: "A", won: true}]->(m2),
+  (alex)-[:PLAYED_IN    {team: "B", won: false}]->(m2),
+  (carlos)-[:PLAYED_IN  {team: "B", won: false}]->(m2),
+  (alex)-[:PLAYED_IN    {team: "A", won: false}]->(m3),
+  (beatriz)-[:PLAYED_IN {team: "A", won: false}]->(m3),
+  (diana)-[:PLAYED_IN   {team: "B", won: true}]->(m3),
+  (emilio)-[:PLAYED_IN  {team: "B", won: true}]->(m3),
+  (diana)-[:PLAYED_IN   {team: "A", won: true}]->(m4),
+  (carlos)-[:PLAYED_IN  {team: "A", won: true}]->(m4),
+  (alex)-[:PLAYED_IN    {team: "B", won: false}]->(m4),
+  (beatriz)-[:PLAYED_IN {team: "B", won: false}]->(m4);

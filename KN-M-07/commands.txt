@@ -1,0 +1,25 @@
+export MONGO_URI='mongodb://admin:m165AdminPass!@107.20.30.198:27017/?authSource=admin'
+
+==============================
+A) PACKAGE.JSON ANZEIGEN
+==============================
+
+cat KN-M-07/package.json
+
+==============================
+A) APP.JS ANZEIGEN
+==============================
+
+cat KN-M-07/app.js
+
+==============================
+B) DEPENDENCIES INSTALLIEREN
+==============================
+
+npm --prefix KN-M-07 install
+
+==============================
+B) APP AUSFÜHREN
+==============================
+
+MONGO_URI="$MONGO_URI" node KN-M-07/app.js

@@ -1,0 +1,78 @@
+export MONGO_URI='mongodb://admin:m165AdminPass!@107.20.30.198:27017/?authSource=admin'
+
+==============================
+B) COMPASS VERBINDUNG
+==============================
+
+$MONGO_URI
+
+==============================
+C) SHELL — VERBINDEN
+==============================
+
+mongosh "$MONGO_URI"
+
+==============================
+C) SHELL — BEFEHLE (einzeln)
+==============================
+
+show dbs;
+
+show databases;
+
+use DeAlmeida
+
+show collections;
+
+show tables;
+
+var test = "hallo";
+
+test;
+
+exit
+
+==============================
+D) FALSCHE AUTHSOURCE (Fehler)
+==============================
+
+mongosh "${MONGO_URI/admin\?authSource=admin/admin?authSource=padel}"
+
+==============================
+D) USERS ERSTELLEN
+==============================
+
+cat KN-M-01/createUsers.js
+mongosh "$MONGO_URI" --quiet < KN-M-01/createUsers.js
+
+==============================
+D) DATEN EINFÜGEN
+==============================
+
+mongosh "$MONGO_URI" --quiet < KN-M-03/insertData.js
+
+==============================
+D) PADELREADER (nur lesen)
+==============================
+
+mongosh 'mongodb://padelreader:ReaderPass!1@107.20.30.198:27017/padel?authSource=padel'
+
+db.players.find().limit(2)
+
+db.players.insertOne({test:1})
+
+exit
+
+==============================
+D) PADELWRITER (lesen+schreiben)
+==============================
+
+mongosh 'mongodb://padelwriter:WriterPass!1@107.20.30.198:27017/padel?authSource=admin'
+
+db.players.find().limit(2)
+
+db.players.insertOne({first_name: "Test", license_no: 88889})
+
+db.players.deleteOne({license_no: 88889})
+
+exit

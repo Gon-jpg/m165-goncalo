@@ -1,0 +1,59 @@
+classDiagram
+    class players {
+      ObjectId _id
+      int license_no
+      string first_name
+      string last_name
+      date birthdate
+      int ranking_points
+      char gender
+      ObjectId home_club_id
+      Embedded contact
+    }
+    class contact {
+      string email
+      string phone
+    }
+    class clubs {
+      ObjectId _id
+      string name
+      string city
+      date founded
+      Embedded[] courts
+    }
+    class court_embed {
+      int number
+      string surface
+      bool indoor
+      float hourly_rate
+    }
+    class tournaments {
+      ObjectId _id
+      string name
+      string category
+      date start_date
+      float prize_money
+      ObjectId[] participants
+    }
+    class matches {
+      ObjectId _id
+      ObjectId tournament_id
+      int court_number
+      ObjectId club_id
+      date played_at
+      ObjectId[] team_a
+      ObjectId[] team_b
+      Embedded[] sets
+    }
+    class set_embed {
+      int a
+      int b
+    }
+    players *-- contact
+    clubs *-- court_embed
+    matches *-- set_embed
+    players --> clubs : home_club_id
+    tournaments --> players : participants
+    matches --> tournaments : tournament_id
+    matches --> clubs : club_id
+    matches --> players : team_a/team_b

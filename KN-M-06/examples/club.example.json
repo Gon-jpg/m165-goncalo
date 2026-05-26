@@ -1,0 +1,10 @@
+{
+  "name": "Padel Club Zürich",
+  "city": "Zürich",
+  "founded": "2017-04-12T00:00:00Z",
+  "courts": [
+    { "number": 1, "surface": "Kunstrasen", "indoor": true,  "hourly_rate": 38.0 },
+    { "number": 2, "surface": "Kunstrasen", "indoor": true,  "hourly_rate": 38.0 },
+    { "number": 3, "surface": "Beton",      "indoor": false, "hourly_rate": 28.0 }
+  ]
+}
